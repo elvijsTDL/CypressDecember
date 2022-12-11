@@ -4,6 +4,9 @@ export class BasePage {
        cy.get(selector).click()
     }
 
+    static clickMultiple(selector){
+        cy.get(selector).click({ multiple:true })
+    }
     static type(selector,message){
         cy.get(selector).type(message)
     }
@@ -53,4 +56,11 @@ export class BasePage {
         })
     }
 
+    static setupCartForTests(items) {
+        window.localStorage.setItem("cart-contents" , items)
+    }
+
+    static selectOption(selector,option) {
+        cy.get(selector).select(option)
+    }
 }
